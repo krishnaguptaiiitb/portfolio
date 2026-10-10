@@ -1,0 +1,281 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Krishna Gupta – Interface Designer</title>
+<meta name="description" content="Krishna Gupta designs interfaces and builds them. Available for a six-month hybrid UI/UX internship.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,500;12..96,700&family=Instrument+Sans:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+:root{--bg:#E8E9EB;--card:#F5F6F7;--ink:#111214;--mut:#5B5F66;--line:#C8CACE;--acc:#2A44F0;--warn:#B25E00;--ok:#13795B;
+--d:'Bricolage Grotesque','Helvetica Neue',Arial,sans-serif;--b:'Instrument Sans','Helvetica Neue',Arial,sans-serif;
+box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}
+@media(prefers-color-scheme:dark){:root:not([data-theme="light"]){--bg:#0F1013;--card:#17181C;--ink:#ECEDEF;--mut:#9A9EA6;--line:#2A2C31;--acc:#8294FF;--warn:#F0A04B;--ok:#4FD1A5}}
+:root[data-theme="dark"]{--bg:#0F1013;--card:#17181C;--ink:#ECEDEF;--mut:#9A9EA6;--line:#2A2C31;--acc:#8294FF;--warn:#F0A04B;--ok:#4FD1A5}
+html{scroll-padding-top:env(safe-area-inset-top,0px);scroll-behavior:smooth}
+*,*::before,*::after{box-sizing:inherit}
+body{margin:0;background:var(--bg);color:var(--ink);font:400 1.0625rem/1.55 var(--b);-webkit-font-smoothing:antialiased}
+a{color:inherit}
+:focus-visible{outline:2px solid var(--acc);outline-offset:3px;border-radius:2px}
+.wrap{max-width:1240px;margin:0 auto;padding:0 clamp(1.25rem,4vw,3rem)}
+header{display:flex;justify-content:space-between;align-items:center;gap:1rem;padding:1.5rem 0;font-weight:500}
+header nav{display:flex;gap:1.5rem}
+header a{text-decoration:none}
+header nav a:hover{color:var(--acc)}
+.clock{color:var(--mut);font-variant-numeric:tabular-nums}
+.hero{padding:clamp(2rem,8vw,6rem) 0 clamp(3rem,8vw,6rem)}
+h1{font:700 clamp(3.4rem,14.5vw,12.5rem)/.86 var(--d);letter-spacing:-.045em;margin:0}
+h1 span{display:block;overflow:hidden;padding-bottom:.06em}
+h1 span i{display:block;font-style:normal;animation:up .9s cubic-bezier(.2,.8,.2,1) both}
+h1 span:nth-child(2) i{animation-delay:.12s}
+@keyframes up{from{transform:translateY(105%)}to{transform:none}}
+.hero-row{display:grid;grid-template-columns:1.4fr 1fr;gap:2rem;margin-top:clamp(2rem,5vw,4rem);align-items:end}
+.lede{font:500 clamp(1.4rem,2.6vw,2.1rem)/1.2 var(--d);letter-spacing:-.015em;margin:0;max-width:26ch}
+.meta{display:grid;gap:.35rem;color:var(--mut)}
+.meta b{color:var(--ink);font-weight:600}
+.status{display:inline-flex;align-items:center;gap:.5rem}
+.status::before{content:"";width:.5rem;height:.5rem;border-radius:50%;background:var(--ok)}
+h2{font:700 clamp(1.9rem,4vw,3rem)/1.05 var(--d);letter-spacing:-.03em;margin:0 0 2rem}
+section{padding:clamp(3rem,7vw,5.5rem) 0;border-top:1px solid var(--line)}
+.proj{border-top:1px solid var(--line)}
+.proj:last-child{border-bottom:1px solid var(--line)}
+.proj>button{all:unset;box-sizing:border-box;display:grid;grid-template-columns:1fr auto 1.5rem;gap:1.5rem;align-items:baseline;width:100%;padding:1.5rem 0;cursor:pointer}
+.proj>button:focus-visible{outline:2px solid var(--acc);outline-offset:-2px}
+.proj h3{font:700 clamp(1.6rem,3.6vw,2.8rem)/1.05 var(--d);letter-spacing:-.03em;margin:0;transition:color .2s}
+.proj>button:hover h3{color:var(--acc)}
+.proj .stack{color:var(--mut);font-size:.95rem;text-align:right}
+.proj .pm{width:1.5rem;height:1.5rem;position:relative;align-self:center}
+.pm::before,.pm::after{content:"";position:absolute;left:0;right:0;top:50%;height:2px;background:currentColor;transition:transform .25s}
+.pm::after{transform:rotate(90deg)}
+.proj.open .pm::after{transform:rotate(0)}
+.panel{display:grid;grid-template-rows:0fr;transition:grid-template-rows .4s ease}
+.proj.open .panel{grid-template-rows:1fr}
+.panel>div{overflow:hidden}
+.case{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,4rem);padding:.5rem 0 3rem}
+.case h4{font:600 .95rem var(--b);margin:1.4rem 0 .2rem;color:var(--mut)}
+.case h4:first-child{margin-top:0}
+.case p{margin:0;max-width:52ch}
+.q{font:500 clamp(1.3rem,2.2vw,1.7rem)/1.2 var(--d);letter-spacing:-.015em;margin:0 0 1.5rem;max-width:22ch}
+.fig{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:1.25rem;align-self:start}
+.fig .cap{color:var(--mut);font-size:.85rem;margin-top:1rem}
+.btn{font:600 .9rem var(--b);color:var(--ink);background:transparent;border:1px solid var(--line);border-radius:8px;padding:.45rem .8rem;cursor:pointer;transition:background .2s,border-color .2s,color .2s}
+.btn:hover{border-color:var(--acc);color:var(--acc)}
+.btn[aria-pressed="true"]{background:var(--acc);border-color:var(--acc);color:var(--bg)}
+.file{font-weight:600;margin-bottom:.75rem}
+.rcp{display:flex;align-items:center;justify-content:space-between;gap:1rem;padding:.7rem 0;border-top:1px solid var(--line)}
+.rcp small{display:block;color:var(--mut);transition:color .2s}
+.rcp.off strong{text-decoration:line-through;color:var(--mut)}
+.rcp.off small{color:var(--warn)}
+.exam{border-radius:10px;border:1px solid var(--line);padding:1rem;transition:border-color .3s}
+.exam .t{font:700 2.4rem var(--d);font-variant-numeric:tabular-nums;letter-spacing:-.03em}
+.exam .msg{min-height:2.9em;margin:.4rem 0 0;font-weight:500;color:var(--mut)}
+.exam[data-s="warn"]{border-color:var(--warn)}.exam[data-s="warn"] .msg{color:var(--warn)}
+.exam[data-s="done"]{border-color:var(--ok)}.exam[data-s="done"] .msg{color:var(--ok)}
+.tabs{display:flex;gap:.5rem;flex-wrap:wrap;margin-top:1rem}
+.lb{position:relative;height:160px}
+.lb li{position:absolute;left:0;right:0;height:36px;display:flex;justify-content:space-between;align-items:center;padding:0 .75rem;border-radius:8px;background:var(--bg);transition:transform .6s cubic-bezier(.2,.8,.2,1)}
+.lb{list-style:none;margin:0;padding:0}
+.lb em{font-style:normal;color:var(--ok);font-size:.85rem;margin-left:.6rem;opacity:0;transition:opacity .3s}
+.lb li.up em{opacity:1}
+.gantt{position:relative;height:44px;border-radius:8px;background:var(--bg);overflow:hidden}
+.gantt div{position:absolute;top:4px;bottom:4px;border-radius:5px;display:flex;align-items:center;justify-content:center;font-weight:600;font-size:.85rem;transition:left .4s,width .4s}
+.axis{display:flex;justify-content:space-between;color:var(--mut);font-size:.8rem;margin-top:.4rem;font-variant-numeric:tabular-nums}
+.steps{display:grid;grid-template-columns:repeat(4,1fr);gap:1.5rem;counter-reset:s;list-style:none;margin:0;padding:0}
+.steps li{counter-increment:s;border-top:2px solid var(--ink);padding-top:1rem}
+.steps li::before{content:counter(s);display:block;font:700 1rem var(--d);color:var(--mut);margin-bottom:.6rem}
+.steps b{font:700 1.3rem/1.1 var(--d);letter-spacing:-.02em;display:block;margin-bottom:.4rem}
+.steps p{margin:0;color:var(--mut);font-size:1rem}
+.about{display:grid;grid-template-columns:1fr 1fr;gap:clamp(1.5rem,4vw,4rem)}
+.about p{margin:0 0 1rem;max-width:56ch}
+dl{margin:0;display:grid;grid-template-columns:auto 1fr;gap:.9rem 1.5rem}
+dt{color:var(--mut)}dd{margin:0;font-weight:500}
+.contact a{font:700 clamp(1.8rem,7vw,5.5rem)/1 var(--d);letter-spacing:-.04em;text-decoration:none;overflow-wrap:anywhere;background:linear-gradient(var(--acc),var(--acc)) 0 100%/0 3px no-repeat;transition:background-size .35s}
+.contact a:hover{background-size:100% 3px}
+footer{padding:2rem 0 3rem;color:var(--mut);border-top:1px solid var(--line);display:flex;justify-content:space-between;gap:1rem;flex-wrap:wrap;font-size:.95rem}
+@media(max-width:820px){.hero-row,.case,.about{grid-template-columns:1fr}.steps{grid-template-columns:1fr 1fr}.proj>button{grid-template-columns:1fr 1.5rem}.proj .stack{display:none}header nav{gap:1rem}.clock{display:none}}
+@media(prefers-reduced-motion:reduce){*{animation:none!important;transition:none!important}html{scroll-behavior:auto}}
+</style>
+</head>
+<body>
+<div class="wrap">
+<header>
+  <a href="#top"><strong>Krishna Gupta</strong></a>
+  <nav aria-label="Primary"><a href="#work">Work</a><a href="#process">Process</a><a href="#about">About</a><a href="#contact">Contact</a></nav>
+  <span class="clock" id="clock" aria-hidden="true"></span>
+</header>
+
+<main id="top">
+<div class="hero">
+  <h1 aria-label="Krishna Gupta"><span><i>Krishna</i></span><span><i>Gupta</i></span></h1>
+  <div class="hero-row">
+    <p class="lede">I design interfaces and build them, so what I hand off is something an engineer can ship.</p>
+    <div class="meta">
+      <span class="status"><b>Available for a six-month hybrid internship</b></span>
+      <span>B.Tech Computer Science, IIIT Bhopal, class of 2027</span>
+      <span>Bhopal, India</span>
+    </div>
+  </div>
+</div>
+
+<section id="work" aria-labelledby="wh">
+  <h2 id="wh">Selected work</h2>
+  <div id="projects">
+
+  <article class="proj open">
+    <button aria-expanded="true" aria-controls="p1"><h3>Secure Cloud Storage</h3><span class="stack">React, Node.js, Web Crypto API</span><span class="pm" aria-hidden="true"></span></button>
+    <div class="panel" id="p1"><div><div class="case">
+      <div>
+        <p class="q">How do you make revoking access as easy as sharing?</p>
+        <h4>Problem</h4><p>Files are encrypted in the browser, so nothing on screen shows who can still open them. Security that people can't see is security they can't trust.</p>
+        <h4>Decision</h4><p>Every recipient sits in one list with one clear action. Revoking re-encrypts the file key, so the screen and the real access always match.</p>
+        <h4>Why it helps the user</h4><p>People never have to wonder if a removal worked. The row tells them.</p>
+      </div>
+      <div class="fig">
+        <div class="file">Q3-report.pdf</div>
+        <div id="rcps"></div>
+        <div class="cap">Try it. Revoke a recipient, then share again.</div>
+      </div>
+    </div></div></div>
+  </article>
+
+  <article class="proj">
+    <button aria-expanded="false" aria-controls="p2"><h3>Online Assessment Platform</h3><span class="stack">Flask, PostgreSQL, JavaScript</span><span class="pm" aria-hidden="true"></span></button>
+    <div class="panel" id="p2"><div><div class="case">
+      <div>
+        <p class="q">What should a student see when time is running out?</p>
+        <h4>Problem</h4><p>Timed exams stress people. A countdown alone gives no help, and a sudden auto-submit feels unfair. Used by 250+ students across multiple colleges.</p>
+        <h4>Decision</h4><p>The timer escalates in stages: calm, a plain warning with a next step, then a clear confirmation once answers are submitted.</p>
+        <h4>Why it helps the user</h4><p>No one is surprised. Each state says what is happening and what to do.</p>
+      </div>
+      <div class="fig">
+        <div class="exam" id="exam" data-s="calm"><div class="t" id="et">10:00</div><p class="msg" id="em" aria-live="polite">Answer at your own pace.</p></div>
+        <div class="tabs" role="group" aria-label="Preview a state">
+          <button class="btn" aria-pressed="true" data-s="calm">Start</button>
+          <button class="btn" aria-pressed="false" data-s="warn">5 minutes left</button>
+          <button class="btn" aria-pressed="false" data-s="done">Time is up</button>
+        </div>
+      </div>
+    </div></div></div>
+  </article>
+
+  <article class="proj">
+    <button aria-expanded="false" aria-controls="p3"><h3>Real-Time Quiz Platform</h3><span class="stack">React, Firebase, Cloud Functions</span><span class="pm" aria-hidden="true"></span></button>
+    <div class="panel" id="p3"><div><div class="case">
+      <div>
+        <p class="q">How do 100+ people follow a ranking that keeps changing?</p>
+        <h4>Problem</h4><p>When a live leaderboard jumps, players lose track of where they are and why.</p>
+        <h4>Decision</h4><p>Rows slide to their new position and show the points just gained, so the change can be followed with the eye.</p>
+        <h4>Why it helps the user</h4><p>Players see their own movement, which keeps a fast game readable.</p>
+      </div>
+      <div class="fig">
+        <ul class="lb" id="lb" aria-live="polite"></ul>
+        <div class="tabs"><button class="btn" id="nq">Next question</button></div>
+      </div>
+    </div></div></div>
+  </article>
+
+  <article class="proj">
+    <button aria-expanded="false" aria-controls="p4"><h3>CPU Scheduler Visualizer</h3><span class="stack">HTML, CSS, JavaScript</span><span class="pm" aria-hidden="true"></span></button>
+    <div class="panel" id="p4"><div><div class="case">
+      <div>
+        <p class="q">Can you understand an algorithm by watching it run?</p>
+        <h4>Problem</h4><p>Scheduling algorithms are usually taught as tables. The differences between them are hard to feel.</p>
+        <h4>Decision</h4><p>The same four processes run under each algorithm. Switching redraws one timeline, so comparison is direct.</p>
+        <h4>Why it helps the user</h4><p>Learners spot the difference themselves instead of memorising it.</p>
+      </div>
+      <div class="fig">
+        <div class="gantt" id="gt" role="img" aria-label="Scheduling timeline"></div>
+        <div class="axis" id="ax"></div>
+        <div class="tabs" role="group" aria-label="Algorithm">
+          <button class="btn" aria-pressed="true" data-a="fcfs">First come, first served</button>
+          <button class="btn" aria-pressed="false" data-a="sjf">Shortest job first</button>
+          <button class="btn" aria-pressed="false" data-a="rr">Round robin</button>
+        </div>
+      </div>
+    </div></div></div>
+  </article>
+
+  </div>
+</section>
+
+<section id="process" aria-labelledby="ph">
+  <h2 id="ph">How I work</h2>
+  <ol class="steps">
+    <li><b>Map the flow</b><p>Write down what the person is trying to do and where they might stall.</p></li>
+    <li><b>Wireframe</b><p>Sketch layouts at phone and desktop widths before choosing any colour.</p></li>
+    <li><b>Design every state</b><p>Empty, loading, error, success. The screens people actually meet.</p></li>
+    <li><b>Hand off</b><p>Organised files and plain notes, built with the engineer, not thrown over a wall.</p></li>
+  </ol>
+</section>
+
+<section id="about" aria-labelledby="ah">
+  <h2 id="ah">About</h2>
+  <div class="about">
+    <div>
+      <p>I'm a computer science student who got pulled toward the screen side of software. I've built backends, but the part I keep coming back to is the moment a person uses what I made.</p>
+      <p>As a teaching assistant for Object Oriented Programming, I spent a semester watching where people get stuck and explaining it clearly. I want to bring that habit to product design.</p>
+    </div>
+    <dl>
+      <dt>Education</dt><dd>B.Tech Computer Science, IIIT Bhopal, CGPA 9.18</dd>
+      <dt>Hackathon</dt><dd>Smart India Hackathon 2025, qualified for next round</dd>
+      <dt>Campus</dt><dd>HackerRank Campus Crew and Training &amp; Placement Cell</dd>
+      <dt>Open source</dt><dd>GSSoC 2026, SWoC Season 6, ECWoC 2026</dd>
+      <dt>Code</dt><dd>HTML, CSS, JavaScript, React, Next.js</dd>
+    </dl>
+  </div>
+</section>
+
+<section id="contact" class="contact" aria-labelledby="ch">
+  <h2 id="ch">Let's talk</h2>
+  <a href="mailto:krishnagupta52555@gmail.com">krishnagupta52555@gmail.com</a>
+</section>
+</main>
+
+<footer><span>© 2026 Krishna Gupta</span><span>Designed and built by hand</span></footer>
+</div>
+
+<script>
+// Clock
+(function(){var c=document.getElementById('clock');function t(){c.textContent='Bhopal '+new Date().toLocaleTimeString('en-GB',{timeZone:'Asia/Kolkata'})}t();setInterval(t,1000)})();
+
+// Accordion
+document.querySelectorAll('.proj>button').forEach(function(b){b.addEventListener('click',function(){
+  var p=b.parentElement,o=!p.classList.contains('open');p.classList.toggle('open',o);b.setAttribute('aria-expanded',o)})});
+
+// Share list
+var people=[{n:'Aarav Mehta',e:'aarav@example.com',off:false},{n:'Meera Nair',e:'meera@example.com',off:false},{n:'Dev Patel',e:'dev@example.com',off:false}];
+function drawR(){var h='';people.forEach(function(p,i){h+='<div class="rcp'+(p.off?' off':'')+'"><div><strong>'+p.n+'</strong><small>'+(p.off?'Access removed':p.e)+'</small></div><button class="btn" data-i="'+i+'" aria-label="'+(p.off?'Share again with ':'Revoke access for ')+p.n+'">'+(p.off?'Share again':'Revoke')+'</button></div>'});document.getElementById('rcps').innerHTML=h}
+document.getElementById('rcps').addEventListener('click',function(e){var b=e.target.closest('button');if(!b)return;var p=people[b.dataset.i];p.off=!p.off;drawR();var n=document.querySelector('#rcps [data-i="'+b.dataset.i+'"]');if(n)n.focus()});
+drawR();
+
+// Exam states
+var ES={calm:['10:00','Answer at your own pace.'],warn:['05:00','5 minutes left. Review the questions you skipped.'],done:['00:00','Time is up. Your answers have been submitted.']};
+document.querySelectorAll('[data-s]').forEach(function(b){if(b.tagName!=='BUTTON')return;b.addEventListener('click',function(){var s=b.dataset.s;
+  document.getElementById('exam').dataset.s=s;document.getElementById('et').textContent=ES[s][0];document.getElementById('em').textContent=ES[s][1];
+  b.parentElement.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b)})})});
+
+// Leaderboard
+var pl=[{n:'Ishaan',s:320},{n:'Ananya',s:290},{n:'Rohan',s:260},{n:'Sara',s:240}],lb=document.getElementById('lb');
+pl.forEach(function(p){var li=document.createElement('li');li.innerHTML='<span>'+p.n+'</span><span><b></b><em></em></span>';p.el=li;lb.appendChild(li)});
+function drawL(g){var o=pl.slice().sort(function(a,b){return b.s-a.s});o.forEach(function(p,i){p.el.style.transform='translateY('+i*41+'px)';p.el.querySelector('b').textContent=p.s;var m=p.el.querySelector('em');m.textContent=g&&g[p.n]?'+'+g[p.n]:'';p.el.classList.toggle('up',!!(g&&g[p.n]))})}
+drawL();
+document.getElementById('nq').addEventListener('click',function(){var g={};pl.forEach(function(p){var a=Math.random()<.7?(1+Math.floor(Math.random()*4))*25:0;p.s+=a;g[p.n]=a});drawL(g)});
+
+// Scheduler
+var PR=[{n:'P1',a:0,b:5},{n:'P2',a:1,b:3},{n:'P3',a:2,b:1},{n:'P4',a:3,b:2}];
+function run(alg){var t=0,out=[],rem=PR.map(function(p){return p.b}),done=[];
+  if(alg==='rr'){var q=[0],add={0:1};while(q.length){var i=q.shift(),r=Math.min(2,rem[i]);out.push([i,t,t+r]);t+=r;rem[i]-=r;PR.forEach(function(p,j){if(!add[j]&&p.a<=t){add[j]=1;q.push(j)}});if(rem[i]>0)q.push(i)}return out}
+  while(done.length<PR.length){var c=PR.map(function(p,i){return i}).filter(function(i){return done.indexOf(i)<0&&PR[i].a<=t});
+    c.sort(function(x,y){return alg==='sjf'?PR[x].b-PR[y].b||PR[x].a-PR[y].a:PR[x].a-PR[y].a});
+    var k=c[0];out.push([k,t,t+PR[k].b]);t+=PR[k].b;done.push(k)}return out}
+function drawG(alg){var o=run(alg),T=o[o.length-1][2],sh=[34,48,62,76],g=document.getElementById('gt'),h='';
+  o.forEach(function(s){h+='<div style="left:'+s[1]/T*100+'%;width:calc('+(s[2]-s[1])/T*100+'% - 2px);background:hsl(230 75% '+sh[s[0]]+'%);color:'+(s[0]<2?'#fff':'#111')+'">'+PR[s[0]].n+'</div>'});
+  g.innerHTML=h;document.getElementById('ax').innerHTML='<span>0</span><span>'+T+'</span>';
+  g.setAttribute('aria-label',o.map(function(s){return PR[s[0]].n+' from '+s[1]+' to '+s[2]}).join(', '))}
+drawG('fcfs');
+document.querySelectorAll('[data-a]').forEach(function(b){b.addEventListener('click',function(){drawG(b.dataset.a);b.parentElement.querySelectorAll('button').forEach(function(x){x.setAttribute('aria-pressed',x===b)})})});
+</script>
+</body>
+</html>
